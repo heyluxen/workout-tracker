@@ -119,3 +119,12 @@ const deleteExercise = (req, res) => {
   const deleted = exercises.splice(index, 1);
   res.status(200).json({ deleted: deleted[0].id });
 };
+
+module.exports = {
+  getAllExercises,
+  getExerciseById,
+  createExercise,
+  updateExercise,
+  patchExercise,
+  deleteExercise
+};
