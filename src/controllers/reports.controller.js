@@ -27,3 +27,25 @@ const getReportById = (req, res) => {
 
   res.status(200).json(report);
 };
+
+// POST /api/v1/reports
+const createReport = (req, res) => {
+  const { id_usuario, fecha_inicio, resumen_progreso } = req.body;
+
+  if (!id_usuario || !fecha_inicio || !resumen_progreso) {
+    return res
+      .status(400)
+      .json({ error: "id_usuario, fecha_inicio y resumen_progreso son requeridos" });
+  }
+
+  const newReport = {
+    id: `rpt-${Date.now()}`,
+    id_usuario,
+    fecha_inicio,
+    resumen_progreso,
+    createdAt: new Date().toISOString()
+  };
+  
+  reports.push(newReport);
+  res.status(201).json(newReport);
+};
