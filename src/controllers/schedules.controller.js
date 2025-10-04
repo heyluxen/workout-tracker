@@ -87,3 +87,13 @@ const patchSchedule = (req, res) => {
 
   res.status(200).json(schedules[index]);
 };
+
+// Eliminar DELETE
+const deleteSchedule = (req, res) => {
+  const { id } = req.params;
+  const index = schedules.findIndex(s => s.id === id);
+  if (index === -1) return res.status(404).json({ error: "Programación no encontrada" });
+
+  const deleted = schedules.splice(index, 1);
+  res.status(200).json({ deleted: deleted[0].id });
+};
