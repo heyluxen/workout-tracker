@@ -11,7 +11,8 @@ router.get("/", (req, res) => {
     endpoints: {
       users: "/api/v1/users",
       workouts: "/api/v1/workouts",
-      exercises: "/api/v1/exercises"
+      exercises: "/api/v1/exercises",
+      schedules: "/api/v1/schedules"
     }
   });
 });
