@@ -1,9 +1,7 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-// GET /api/v1/users
-router.get('/', (req, res) => {
-  res.send('Get all users');
-});
+// aquí iremos agregando endpoints para users
 
 module.exports = router;
+
