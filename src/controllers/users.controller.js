@@ -6,6 +6,14 @@ let users = [
     email: "carlos@example.com",
     role: "user",
     createdAt: "2025-09-12T12:00:00Z"
+  },
+
+  {
+    id: "a12b34cd-5e67-8f90-gh12-ij34kl56mn78",
+    name: "Ana Pérez",
+    email: "anap@example.com",
+    role: "admin",
+    createdAt: "2025-09-15T09:30:00Z"
   }
 ];
 
