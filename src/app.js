@@ -46,3 +46,13 @@ const patchWorkout = (req, res) => {
 
   res.status(200).json(workouts[index]);
 };
+
+// DELETE /api/v1/workouts/:id
+const deleteWorkout = (req, res) => {
+  const { id } = req.params;
+  const index = workouts.findIndex(w => w.id === id);
+  if (index === -1) return res.status(404).json({ error: "Entrenamiento no encontrado" });
+
+  const deleted = workouts.splice(index, 1);
+  res.status(200).json({ deleted: deleted[0].id });
+};
