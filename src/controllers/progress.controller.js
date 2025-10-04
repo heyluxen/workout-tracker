@@ -31,3 +31,26 @@ const getProgressById = (req, res) => {
 
   res.status(200).json(record);
 };
+
+// POST /api/v1/progress
+const createProgress = (req, res) => {
+  const { id_usuario, fecha_registro, peso_corporal, medidas, porcentaje_grasa, records_personales } = req.body;
+
+  if (!id_usuario || !fecha_registro) {
+    return res.status(400).json({ error: "id_usuario y fecha_registro son requeridos" });
+  }
+
+  const newRecord = {
+    id: `prog-${Date.now()}`,
+    id_usuario,
+    fecha_registro,
+    peso_corporal: peso_corporal || null,
+    medidas: medidas || {},
+    porcentaje_grasa: porcentaje_grasa || null,
+    records_personales: records_personales || [],
+    createdAt: new Date().toISOString()
+  };
+
+  progressRecords.push(newRecord);
+  res.status(201).json(newRecord);
+};
