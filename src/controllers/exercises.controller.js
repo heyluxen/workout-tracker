@@ -1,7 +1,7 @@
 // Estado en memoria (simulación)
 let exercises = [
   {
-    id: "1",
+    id: "4",
     workoutId: "1",
     name: "Press de banca",
     description: "Ejercicio de pecho",
@@ -9,7 +9,19 @@ let exercises = [
     reps: 10,
     weight: 60,
     rest: 90
+  },
+
+  {
+    id: "7",
+    workoutId: "2",
+    name: "Sentadillas",
+    description: "Ejercicio de piernas",
+    series: 4,
+    reps: 12,
+    weight: 80,
+    rest: 120
   }
+
 ];
 
 // GET /api/v1/exercises?workoutId=...&search=...
