@@ -45,3 +45,28 @@ const getExerciseById = (req, res) => {
 
   res.status(200).json(exercise);
 };
+
+// POST /api/v1/exercises
+const createExercise = (req, res) => {
+  const { workoutId, name, description, series, reps, weight, rest } = req.body;
+
+  if (!workoutId || !name) {
+    return res.status(400).json({ error: "workoutId y name son requeridos" });
+  }
+
+  const newExercise = {
+    id: `${Date.now()}`,
+    workoutId,
+    name,
+    description: description || "",
+    series: series || 0,
+    reps: reps || 0,
+    weight: weight || null,
+    rest: rest || 60
+  };
+
+  exercises.push(newExercise);
+  res.status(201).json(newExercise);
+};
+
+
