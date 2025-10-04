@@ -32,6 +32,21 @@ const getProgressById = (req, res) => {
   res.status(200).json(record);
 };
 
+// GET /api/v1/progress/stats
+const getProgressStats = (req, res) => {
+  if (progressRecords.length === 0)
+    return res.status(200).json({ message: "No hay datos registrados aún" });
+
+  const totalPeso = progressRecords.reduce((acc, p) => acc + (p.peso_corporal || 0), 0);
+  const promedioPeso = totalPeso / progressRecords.length;
+
+  res.status(200).json({
+    total_registros: progressRecords.length,
+    peso_promedio: promedioPeso.toFixed(2),
+    ultimo_registro: progressRecords[progressRecords.length - 1]
+  });
+};
+
 // POST /api/v1/progress
 const createProgress = (req, res) => {
   const { id_usuario, fecha_registro, peso_corporal, medidas, porcentaje_grasa, records_personales } = req.body;
@@ -94,4 +109,14 @@ const patchProgress = (req, res) => {
   };
 
   res.status(200).json(progressRecords[index]);
+};
+
+// DELETE /api/v1/progress/:id
+const deleteProgress = (req, res) => {
+  const { id } = req.params;
+  const index = progressRecords.findIndex(p => p.id === id);
+  if (index === -1) return res.status(404).json({ error: "Registro no encontrado" });
+
+  const deleted = progressRecords.splice(index, 1);
+  res.status(200).json({ deleted: deleted[0].id });
 };
