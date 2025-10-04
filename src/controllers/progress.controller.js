@@ -120,3 +120,13 @@ const deleteProgress = (req, res) => {
   const deleted = progressRecords.splice(index, 1);
   res.status(200).json({ deleted: deleted[0].id });
 };
+
+module.exports = {
+  getProgress,
+  getProgressById,
+  createProgress,
+  updateProgress,
+  patchProgress,
+  deleteProgress,
+  getProgressStats
+};

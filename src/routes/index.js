@@ -13,7 +13,8 @@ router.get("/", (req, res) => {
       workouts: "/api/v1/workouts",
       exercises: "/api/v1/exercises",
       schedules: "/api/v1/schedules",
-      reports: "/api/v1/reports"
+      reports: "/api/v1/reports",
+      progress: "/api/v1/progress"
     }
   });
 });
