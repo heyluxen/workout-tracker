@@ -34,3 +34,26 @@ const getWorkoutById = (req, res) => {
   if (!workout) return res.status(404).json({ error: "Entrenamiento no encontrado" });
   res.status(200).json(workout);
 };
+
+// POST /api/v1/workouts
+const createWorkout = (req, res) => {
+  const { name, description, userId, exercises, estimatedDuration } = req.body;
+
+  if (!name || !userId) {
+    return res.status(400).json({ error: "Name y userId son requeridos" });
+  }
+
+  const newWorkout = {
+    id: `${Date.now()}`,
+    name,
+    description,
+    userId,
+    exercises: exercises || [],
+    createdAt: new Date().toISOString(),
+    estimatedDuration: estimatedDuration || 0
+  };
+
+  workouts.push(newWorkout);
+  res.status(201).json(newWorkout);
+};
+
