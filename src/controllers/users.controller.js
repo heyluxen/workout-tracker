@@ -9,11 +9,11 @@ let users = [
   },
 
   {
-    id: "1733350201234",
-    name: "Monica Pinto",
-    email: "monicap@example.com",
+    id: "a12b34cd-5e67-8f90-gh12-ij34kl56mn78",
+    name: "Ana Pérez",
+    email: "anap@example.com",
     role: "admin",
-    createdAt: "2025-10-04T16:30:01.234Z"
+    createdAt: "2025-09-15T09:30:00Z"
   }
 ];
 

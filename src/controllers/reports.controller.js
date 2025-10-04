@@ -9,7 +9,18 @@ let reports = [
       ejercicios_completados: 45
     },
     createdAt: "2025-09-02T12:00:00Z"
-  }
+  },
+
+    {
+    id: "rpt-002",
+    id_usuario: "a12b34cd-5e67-8f90-gh12-ij34kl56mn78",
+    fecha_inicio: "2025-09-15",
+    resumen_progreso: {
+        series_totales: 80,
+        ejercicios_completados: 30
+    },
+    createdAt: "2025-09-16T09:30:00Z"
+    }
 ];
 
 // GET /api/v1/reports

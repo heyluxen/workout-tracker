@@ -6,7 +6,15 @@ let schedules = [
     userId: "b42f53fa-7b30-4b91-8d36-dc1c6ef27611",
     date: "2025-10-10",
     time: "08:00"
-  }
+  },
+
+    {
+    id: "2",
+    workoutId: "2",
+    userId: "a12b34cd-5e67-8f90-gh12-ij34kl56mn78",
+    date: "2025-10-12",
+    time: "18:30"
+    }
 ];
 
 // Obtener todos (con filtros opcionales por userId o workoutId) GET

@@ -13,7 +13,22 @@ let progressRecords = [
     porcentaje_grasa: 18.2,
     records_personales: ["press banca 80kg", "sentadilla 100kg"],
     createdAt: "2025-09-20T10:00:00Z"
-  }
+  },
+
+    {
+    id: "prog-002",
+    id_usuario: "a12b34cd-5e67-8f90-gh12-ij34kl56mn78",
+    fecha_registro: "2025-09-22",
+    peso_corporal: 65.0,
+    medidas: {
+        pecho: 90,
+        cintura: 75,
+        cadera: 85
+    },
+    porcentaje_grasa: 15.0,
+    records_personales: ["carrera 5km 25min", "burpees 50"],
+    createdAt: "2025-09-22T14:30:00Z"
+    }
 ];
 
 // GET /api/v1/progress
