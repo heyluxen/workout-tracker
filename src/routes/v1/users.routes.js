@@ -12,16 +12,32 @@ let users = [
   }
 ];
 
-// GET /api/v1/users  -> lista (sin filtros aún)
+// GET /api/v1/users?role=...&search=...
 router.get("/", (req, res) => {
-  res.status(200).json(users);
+  const { role, search } = req.query;
+  let result = users;
+
+  if (role) {
+    result = result.filter(u => u.role === role);
+  }
+
+  if (search) {
+    result = result.filter(u =>
+      u.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  res.status(200).json(result);
 });
 
-// GET /api/v1/users/:id  -> individual
+// Validación de id (ejemplo para GET /:id) — reemplazar la lógica anterior si quieres validación explícita:
 router.get("/:id", (req, res) => {
   const { id } = req.params;
+  if (!id) return res.status(400).json({ error: "ID inválido" });
+
   const user = users.find(u => u.id === id);
   if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
+
   res.status(200).json(user);
 });
 
