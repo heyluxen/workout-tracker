@@ -79,5 +79,15 @@ router.patch("/:id", (req, res) => {
   res.status(200).json(users[index]);
 });
 
+// DELETE /api/v1/users/:id
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+  const index = users.findIndex(u => u.id === id);
+  if (index === -1) return res.status(404).json({ error: "Usuario no encontrado" });
+
+  const deleted = users.splice(index, 1);
+  res.status(200).json({ deleted: deleted[0].id });
+});
+
 module.exports = router;
 
