@@ -97,3 +97,12 @@ const deleteSchedule = (req, res) => {
   const deleted = schedules.splice(index, 1);
   res.status(200).json({ deleted: deleted[0].id });
 };
+
+module.exports = {
+  getAllSchedules,
+  getScheduleById,
+  createSchedule,
+  updateSchedule,
+  patchSchedule,
+  deleteSchedule
+};
