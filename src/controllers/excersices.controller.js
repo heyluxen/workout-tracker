@@ -109,3 +109,13 @@ const patchExercise = (req, res) => {
 
   res.status(200).json(exercises[index]);
 };
+
+// DELETE /api/v1/exercises/:id
+const deleteExercise = (req, res) => {
+  const { id } = req.params;
+  const index = exercises.findIndex(e => e.id === id);
+  if (index === -1) return res.status(404).json({ error: "Ejercicio no encontrado" });
+
+  const deleted = exercises.splice(index, 1);
+  res.status(200).json({ deleted: deleted[0].id });
+};
