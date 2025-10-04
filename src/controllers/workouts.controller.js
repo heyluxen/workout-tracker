@@ -8,6 +8,16 @@ let workouts = [
     exercises: [],
     createdAt: new Date().toISOString(),
     estimatedDuration: 60
+  },
+
+  {
+    id: "2",
+    name: "Cardio intenso",
+    description: "Sesión de cardio para quemar grasa",
+    userId: "a12b34cd-5e67-8f90-gh12-ij34kl56mn78",
+    exercises: [],
+    createdAt: new Date().toISOString(),
+    estimatedDuration: 45
   }
 ];
 
