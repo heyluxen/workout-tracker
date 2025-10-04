@@ -69,4 +69,43 @@ const createExercise = (req, res) => {
   res.status(201).json(newExercise);
 };
 
+// PUT /api/v1/exercises/:id
+const updateExercise = (req, res) => {
+  const { id } = req.params;
+  const { name, description, series, reps, weight, rest } = req.body;
 
+  if (!name || !series || !reps) {
+    return res.status(400).json({ error: "name, series y reps son requeridos" });
+  }
+
+  const index = exercises.findIndex(e => e.id === id);
+  if (index === -1) return res.status(404).json({ error: "Ejercicio no encontrado" });
+
+  exercises[index] = {
+    ...exercises[index],
+    name,
+    description,
+    series,
+    reps,
+    weight,
+    rest
+  };
+
+  res.status(200).json(exercises[index]);
+};
+
+// PATCH /api/v1/exercises/:id
+const patchExercise = (req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
+
+  const index = exercises.findIndex(e => e.id === id);
+  if (index === -1) return res.status(404).json({ error: "Ejercicio no encontrado" });
+
+  exercises[index] = {
+    ...exercises[index],
+    ...updates
+  };
+
+  res.status(200).json(exercises[index]);
+};
