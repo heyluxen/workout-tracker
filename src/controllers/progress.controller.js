@@ -54,3 +54,44 @@ const createProgress = (req, res) => {
   progressRecords.push(newRecord);
   res.status(201).json(newRecord);
 };
+
+// PUT /api/v1/progress/:id
+const updateProgress = (req, res) => {
+  const { id } = req.params;
+  const { id_usuario, fecha_registro, peso_corporal, medidas, porcentaje_grasa, records_personales } = req.body;
+
+  const index = progressRecords.findIndex(p => p.id === id);
+  if (index === -1) return res.status(404).json({ error: "Registro no encontrado" });
+
+  if (!id_usuario || !fecha_registro) {
+    return res.status(400).json({ error: "id_usuario y fecha_registro son requeridos" });
+  }
+
+  progressRecords[index] = {
+    ...progressRecords[index],
+    id_usuario,
+    fecha_registro,
+    peso_corporal,
+    medidas,
+    porcentaje_grasa,
+    records_personales
+  };
+
+  res.status(200).json(progressRecords[index]);
+};
+
+// PATCH /api/v1/progress/:id
+const patchProgress = (req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
+
+  const index = progressRecords.findIndex(p => p.id === id);
+  if (index === -1) return res.status(404).json({ error: "Registro no encontrado" });
+
+  progressRecords[index] = {
+    ...progressRecords[index],
+    ...updates
+  };
+
+  res.status(200).json(progressRecords[index]);
+};
