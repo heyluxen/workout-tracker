@@ -12,7 +12,8 @@ router.get("/", (req, res) => {
       users: "/api/v1/users",
       workouts: "/api/v1/workouts",
       exercises: "/api/v1/exercises",
-      schedules: "/api/v1/schedules"
+      schedules: "/api/v1/schedules",
+      reports: "/api/v1/reports"
     }
   });
 });
